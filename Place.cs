@@ -5,17 +5,15 @@ namespace DataTrigger
 {
     public class Place
     {
-        public Place(string name, string state, int prop1, int prop2)
+        public Place(string name, string state, int prop1)
         {
             Name = name;
             State = state;
             Prop1 = prop1;
-            Prop2 = prop2;
         }
 
         public string Name { get; set; }
         public string State { get; set; }
         public int Prop1 { get; set; }
-        public int Prop2 { get; set; }
     }
 }

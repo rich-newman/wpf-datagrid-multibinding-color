@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:DataTrigger"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <local:Places x:Key="PlacesData"/>
-
         <Style TargetType="DataGridRow">
             <Style.Triggers>
                 <DataTrigger Value="True">
@@ -18,7 +20,8 @@
                                 <local:EqualityConverter />
                             </MultiBinding.Converter>
                             <Binding Path="Prop1" />
-                            <Binding Path="Prop2" />
+                            <Binding Path="DataContext.SelectedSolution"
+                                     RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
                         </MultiBinding>
                     </DataTrigger.Binding>
                     <Setter Property="Background" Value="Red" />
@@ -27,6 +30,7 @@
         </Style>
     </Window.Resources>
     <StackPanel>
+        <TextBlock Height="20" Text="{Binding SelectedSolution}" />
         <DataGrid Width="220" HorizontalAlignment="Center" Background="Honeydew"
       ItemsSource="{Binding Source={StaticResource PlacesData}}"/>
     </StackPanel>
